@@ -11,7 +11,7 @@ export function Card( { card, deck, setDeck } ) {
 
         const currentCard = localDeck.find( item => item.id === card.id );
         const onlyTurnedCards = localDeck.filter( item => item.turned === true );
-        
+
         if ( onlyTurnedCards.length > 1 ) {
             return;
         }
@@ -52,6 +52,7 @@ export function Card( { card, deck, setDeck } ) {
     return (
         <>
             <img
+                data-testid={ card.id }
                 className={ styles.card }
                 src={ card.turned ? card.image : CardBack }
                 alt={ card.name }
