@@ -1,5 +1,4 @@
 import React from "react";
-
 // @ts-ignore
 import styles from "./Sidebar.module.css";
 // @ts-ignore
@@ -19,7 +18,7 @@ export function Sidebar( { cards, setDeck } ) {
 
     return (
         <div className={ styles[ "container" ] } >
-            <img src={ Logo } alt="" />
+            <img aria-label="logo" src={ Logo } alt="Imagem do logo do jogo" />
 
             <button onClick={ () => handleReset() }>
                 Reset
