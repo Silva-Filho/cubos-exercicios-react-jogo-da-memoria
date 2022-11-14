@@ -31,9 +31,12 @@ export function Home() {
                                 deck={ deck }
                                 setDeck={ setDeck }
                             />
-                        ) ) 
+                        ) )
                         :
-                        <img src={ Congrats } alt="Imagem de congratulação por ter terminado o jogo." />
+                        <img 
+                            src={ Congrats } 
+                            alt="Imagem de congratulação por ter terminado o jogo." 
+                        />
                     }
                 </div>
             </main>
