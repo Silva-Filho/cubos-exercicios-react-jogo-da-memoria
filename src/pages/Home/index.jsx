@@ -34,6 +34,7 @@ export function Home() {
                         ) )
                         :
                         <img 
+                            aria-label="congrats"
                             src={ Congrats } 
                             alt="Imagem de congratulação por ter terminado o jogo." 
                         />
