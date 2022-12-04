@@ -1,11 +1,18 @@
 import React from "react";
 
-import { describe, expect, it, render, screen, userEvent, vi } from "../../test/index";
+import { 
+    describe, 
+    expect, 
+    it, 
+    render, 
+    screen, 
+    userEvent, 
+    vi, 
+} from "../../test/index";
 
 import { Sidebar } from "./index";
 import { cards } from "../../data/cards";
-// screen.debug();
-// screen.logTestingPlaygroundURL();
+
 describe( "component Sidebar", () => {
     it( "should call function setDeck when button Reset is clicked", async () => {
         const sortedCards = cards;
