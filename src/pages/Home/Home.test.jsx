@@ -1,7 +1,15 @@
-import { cleanup, findByRole, waitFor, waitForElementToBeRemoved } from "@testing-library/react";
 import React from "react";
 
-import { describe, expect, it, render, screen, userEvent, vi } from "../../test";
+import { 
+    describe, 
+    expect, 
+    it, 
+    render, 
+    screen, 
+    userEvent,
+    waitFor, 
+    waitForElementToBeRemoved, 
+} from "../../test";
 
 import { Home } from "./index";
 
@@ -54,7 +62,7 @@ describe( "page Home - layout tests", () => {
         expect( screen.getAllByAltText( /ReactJS/i ) ).toHaveLength( 2 );
     } );
 } );
-// screen.logTestingPlaygroundURL();
+
 describe( "page Home - functions tests", () => {
     it( "should not accept more than two card is turned", async () => {
         render( <Home /> );
@@ -140,9 +148,6 @@ describe( "page Home - functions tests", () => {
             expect( cardsHtmlCss01 ).not.toBeInTheDocument();
             expect( cardsHtmlCss02 ).not.toBeInTheDocument();/*  */
         } );
-        /* await waitForElementToBeRemoved( [ cardsHtmlCss01, cardsHtmlCss02 ] );
-        expect( cardsHtmlCss01 ).not.toBeInTheDocument();
-        expect( cardsHtmlCss02 ).not.toBeInTheDocument(); */
     } );
 
     it( "should display 'Congrats' message when the game is finished", async () => {
@@ -269,30 +274,5 @@ describe( "page Home - functions tests", () => {
         const congratsImg = await screen.findByLabelText( /congrats/i );
 
         expect( congratsImg ).toBeInTheDocument();
-
-        /* await waitFor( () => {
-            expect( cardsHeroku01 ).not.toBeInTheDocument();
-            expect( cardsHeroku02 ).not.toBeInTheDocument();
-            expect( cardsHtmlCss01 ).not.toBeInTheDocument();
-            expect( cardsHtmlCss02 ).not.toBeInTheDocument();
-            expect( cardsJavaScript01 ).not.toBeInTheDocument();
-            expect( cardsJavaScript02 ).not.toBeInTheDocument();
-        } ); */
-        /* await waitForElementToBeRemoved( 
-            [ 
-                cardsHeroku01, 
-                cardsHeroku02, 
-                cardsHtmlCss01, 
-                cardsHtmlCss02, 
-                cardsJavaScript01, 
-                cardsJavaScript02, 
-            ] 
-        );
-        expect( cardsHeroku01 ).not.toBeInTheDocument();
-        expect( cardsHeroku02 ).not.toBeInTheDocument();
-        expect( cardsHtmlCss01 ).not.toBeInTheDocument();
-        expect( cardsHtmlCss02 ).not.toBeInTheDocument();
-        expect( cardsJavaScript01 ).not.toBeInTheDocument();
-        expect( cardsJavaScript02 ).not.toBeInTheDocument(); */
     }, 7000 );
 } );
