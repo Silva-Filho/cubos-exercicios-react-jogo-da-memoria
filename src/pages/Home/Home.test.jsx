@@ -1,14 +1,15 @@
 import React from "react";
 
-import { 
-    describe, 
-    expect, 
-    it, 
-    render, 
-    screen, 
+import {
+    beforeEach,
+    describe,
+    expect,
+    it,
+    render,
+    screen,
     userEvent,
-    waitFor, 
-    waitForElementToBeRemoved, 
+    waitFor,
+    waitForElementToBeRemoved,
 } from "../../test";
 
 import { Home } from "./index";
@@ -64,13 +65,15 @@ describe( "page Home - layout tests", () => {
 } );
 
 describe( "page Home - functions tests", () => {
-    it( "should not accept more than two card is turned", async () => {
+    beforeEach( async  () => { 
         render( <Home /> );
 
         const buttonReset = screen.getByRole( "button", { name: /reset/i } );
 
         await waitFor( () => userEvent.click( buttonReset ) );
+    } );
 
+    it( "should not accept more than two card is turned", async () => {
         const cardHtmlCss = screen.getByTestId( "2" );
         const cardNodeJs = screen.getByTestId( "5" );
         const cardReactJs = screen.getByTestId( "6" );
@@ -94,12 +97,6 @@ describe( "page Home - functions tests", () => {
     } );
 
     it( "should do nothing when the same card is clicked twice", async () => {
-        render( <Home /> );
-
-        const buttonReset = screen.getByRole( "button", { name: /reset/i } );
-
-        await waitFor( () => userEvent.click( buttonReset ) );
-
         const cardHtmlCss = screen.getByTestId( "2" );
 
         await userEvent.click( cardHtmlCss );
@@ -112,12 +109,6 @@ describe( "page Home - functions tests", () => {
     } );
 
     it( "should turned off when de two cards are diferents", async () => {
-        render( <Home /> );
-
-        const buttonReset = screen.getByRole( "button", { name: /reset/i } );
-
-        await waitFor( () => userEvent.click( buttonReset ) );
-
         const cardHtmlCss = screen.getByTestId( "2" );
         const cardNodeJs = screen.getByTestId( "5" );
 
@@ -137,26 +128,23 @@ describe( "page Home - functions tests", () => {
     } );
 
     it( "should remove card '/html & css/i' when founded the pair", async () => {
-        render( <Home /> );
-
-        const [ cardsHtmlCss01, cardsHtmlCss02 ] = screen.getAllByRole( "img", { name: /html & css/i } );
+        const [ cardsHtmlCss01, cardsHtmlCss02 ] = screen.getAllByRole(
+            "img",
+            {
+                name: /html & css/i
+            }
+        );
 
         await userEvent.click( cardsHtmlCss01 );
         await userEvent.click( cardsHtmlCss02 );
 
         await waitFor( () => {
             expect( cardsHtmlCss01 ).not.toBeInTheDocument();
-            expect( cardsHtmlCss02 ).not.toBeInTheDocument();/*  */
+            expect( cardsHtmlCss02 ).not.toBeInTheDocument();
         } );
     } );
 
     it( "should display 'Congrats' message when the game is finished", async () => {
-        render( <Home /> );
-
-        const buttonReset = screen.getByRole( "button", { name: /reset/i } );
-
-        await waitFor( () => userEvent.click( buttonReset ) );
-        
         const [ cardsHeroku01, cardsHeroku02 ] = screen.getAllByRole(
             "img",
             {
